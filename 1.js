@@ -542,31 +542,27 @@ const countriesPrice = [100, 200, 300, 400, 500, 600];
 const registrationLogin = prompt(`Реєстрація: Введіть логін`);
 const registrationPassword = prompt(`Реєстрація: Введіть пароль`);
 
-console.log(registrationLogin);
-console.log(registrationPassword);
+const User = {
+  login: registrationLogin,
+  pass: registrationPassword,
+};
 
-const authorizationLogin = prompt(`Авторизація: Введіть Ваш логін`);
+let authorizationLogin = "";
+do {
+  authorizationLogin = prompt(`Авторизація: Введіть Ваш логін`);
+} while (authorizationLogin !== User.login);
 
-if (authorizationLogin !== registrationLogin) {
-  alert("Це не Ви!");
-  prompt(`Авторизація: Введіть Ваш логін`);
-}
+let authorizationPassword = "";
 
-const authorizationPassword = prompt(`Авторизація: Введіть Ваш пароль`);
+do {
+  authorizationPassword = prompt(`Авторизація: Введіть Ваш пароль`);
+} while (authorizationPassword !== User.pass);
 
-if (authorizationPassword !== registrationPassword) {
-  alert("Пароль не вірний!");
-  prompt(`Авторизація: Введіть Ваш пароль`);
-}
-
-console.log(authorizationLogin);
-console.log(authorizationPassword);
-
-let userName;
-let userPass;
-let userCredits;
-let userCountry;
-let maxPrice;
+// let userName;
+// let userPass;
+// let userCredits;
+// let userCountry;
+// let maxPrice;
 
 // const ganres = [
 //   { id: 28, name: "Action" },
