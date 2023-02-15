@@ -547,16 +547,46 @@ const User = {
   pass: registrationPassword,
 };
 
-let authorizationLogin = "";
+let userName = "";
 do {
-  authorizationLogin = prompt(`Авторизація: Введіть Ваш логін`);
-} while (authorizationLogin !== User.login);
+  userName = prompt(`Авторизація: Введіть Ваш логін`);
+} while (userName !== User.login);
+console.log("Логін успішний");
 
-let authorizationPassword = "";
-
+let userPass = "";
 do {
-  authorizationPassword = prompt(`Авторизація: Введіть Ваш пароль`);
-} while (authorizationPassword !== User.pass);
+  userPass = prompt(`Авторизація: Введіть Ваш пароль`);
+} while (userPass !== User.pass);
+
+const findAvailableCountry = (inputSum) =>
+  countries.filter((el, index) => countriesPrice[index] <= inputSum);
+
+let userCredits = prompt(
+  `Введіть максимальну суму, яку Ви готові витратити на тур`
+);
+const resultForAlert = findAvailableCountry(userCredits);
+
+alert("Список доступних країн:  " + resultForAlert);
+
+let userCountry = prompt("Яку країну Ви обрали?");
+
+function byuTour(arrayCountries, arrayPrices, inputCountry, userCash) {
+  let balance = 0;
+  for (let i = 0; i < arrayCountries.length; i += 1) {
+    if (arrayCountries[i] === inputCountry) {
+      balance = userCash - arrayPrices[i];
+    }
+  }
+  return balance;
+}
+const balanceForAlert = byuTour(
+  countries,
+  countriesPrice,
+  userCountry,
+  userCredits
+);
+
+alert("Тур оплачений, залишок на Вашому рахунку:  " + balanceForAlert);
 
 // let userName;
 // let userPass;
